@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h1>欢迎{{user}}登录</h1>
+<hr>
+<ul>
+    <li>{{ user_list }}</li>
+</ul>
+<hr>
+<ul>
+    {% for item in user_list  %}
+        <li>{{ item }}</li>
+    {% endfor %}
+</ul>
+<div>
+    <span>欢迎{{ user_info.user }}登录，年龄{{ user_info.age }}，身高{{ user_info.height }}</span>
+</div>
+<form action="/user_list/" method="post">
+{#    添加这个参数，不然报错403#}
+    {% csrf_token %}
+    <input type="text" name="user">
+    <input type="password" name="pwd">
+    <input type="submit" value="提交">
+</form>
+</body>
+</html>
